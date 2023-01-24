@@ -6,33 +6,21 @@ import BaseLayout from "../layouts/BaseLayout";
 import { Button } from "components/Button";
 
 export const AppLayout = ({ children }: PropsWithChildren) => (
-  <>
-    <Head>
-      <title>spotless.wave</title>
-      <meta
-        name="description"
-        content="With spotless.wave, keeping our planet clean and healthy is as easy as a
-        few taps on your smartphone. Join the spotless.wave movement today and
-        make a difference in your community and the world."
-      />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-    <BaseLayout>
-      <div className="flex flex-1 flex-col overflow-auto">
-        <header className="p-2">
-          <div className="flex items-center gap-1">
-            <Button intent={"ghost"} size="sm">
-              <Waves size={20} />
-            </Button>
-            <h1 className="font-bold">spotless.wave</h1>
-          </div>
-        </header>
+  <BaseLayout>
+    <div className="flex flex-1 flex-col overflow-auto">
+      <header className="p-2">
+        <div className="flex items-center gap-1">
+          <Button intent={"ghost"} size="sm">
+            <Waves size={20} />
+          </Button>
+          <h1 className="font-bold">spotless.wave</h1>
+        </div>
+      </header>
 
-        <div className="flex-1">{children}</div>
-        <Footer />
-      </div>
-    </BaseLayout>
-  </>
+      <div className="flex-1">{children}</div>
+      <Footer />
+    </div>
+  </BaseLayout>
 );
 
 const Footer = () => (
