@@ -31,7 +31,6 @@ export const Button = ({ className, size, intent, ...props }: ButtonProps) => (
   <button
     type="button"
     className={clsx(btnStyles({ size, intent: intent }), className)}
-    // className="flex w-full cursor-pointer items-center justify-center"
     {...props}
   />
 );
