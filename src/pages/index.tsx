@@ -9,13 +9,16 @@ const Home: NextPage = () => {
     <AppLayout>
       <MintForm
         onSubmit={(values) => {
+          alert("Minting not implemented yet");
           // const tags = Array.from(
           //   new Set(values.tags?.split(",").filter(Boolean))
           // );
           // return null;
         }}
       />
-      <FAQ />
+      <div className="px-2">
+        <FAQ />
+      </div>
     </AppLayout>
   );
 };

@@ -51,11 +51,11 @@ export const MintForm = ({
   const location = watch("location");
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col gap-1">
-        <div className="">
-          <img className="w-full" src={state} />
-          {location ? <StaticMap {...location} /> : null}
-        </div>
+      <div className="">
+        <img className="w-full" src={state} />
+        {location ? <StaticMap {...location} /> : null}
+      </div>
+      <div className="flex flex-col gap-1 p-2">
         <FileInput
           ref={ref}
           name={"photo"}
@@ -80,24 +80,31 @@ export const MintForm = ({
             placeholder="beach,plastics"
           />
         </fieldset>
-        <div className="pt-8">
-          <div className="mt-8 flex gap-1">
-            <Button
-              className="w-full"
-              intent={"outline"}
-              onClick={handleTakePhoto}
-            >
-              <Camera size={20} />
-              Take photo
-            </Button>
-            <Button className="w-full" type="submit">
-              <Verified />
-              Mint
-            </Button>
-          </div>
+        <fieldset>
+          <label className="text-xs tracking-widest">Participants</label>
+          <Input
+            pattern="^[a-zA-Z0-9]+(,[a-zA-Z0-9]+)*$"
+            title="Comma-separated addresses or ens names without spaces (eg: name.eth,0x...)."
+            {...register("tags")}
+            placeholder="0x..."
+          />
+        </fieldset>
+        <div className="mt-8 flex gap-1">
+          <Button
+            className="w-full"
+            intent={"outline"}
+            onClick={handleTakePhoto}
+          >
+            <Camera size={20} />
+            Take photo
+          </Button>
+          <Button className="w-full" type="submit">
+            <Verified />
+            Mint
+          </Button>
         </div>
       </div>
-      <pre className="text-xs">{JSON.stringify(watch(), null, 2)}</pre>
+      {/* <pre className="text-xs">{JSON.stringify(watch(), null, 2)}</pre> */}
     </form>
   );
 };
