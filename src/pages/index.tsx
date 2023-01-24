@@ -9,9 +9,10 @@ const Home: NextPage = () => {
     <AppLayout>
       <MintForm
         onSubmit={(values) => {
-          const tags = Array.from(
-            new Set(values.tags?.split(",").filter(Boolean))
-          );
+          // const tags = Array.from(
+          //   new Set(values.tags?.split(",").filter(Boolean))
+          // );
+          // return null;
         }}
       />
       <FAQ />

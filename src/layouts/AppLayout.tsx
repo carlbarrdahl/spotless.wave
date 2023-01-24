@@ -70,6 +70,7 @@ const Footer = () => (
       <a
         className="text-cyan-200"
         href={`https://hypercerts.xyz/`}
+        rel="noreferrer"
         target="_blank"
       >
         hypercerts

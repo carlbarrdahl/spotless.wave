@@ -2,7 +2,7 @@ import { useState, useRef, ChangeEvent } from "react";
 
 import { Camera, Verified } from "lucide-react";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FileInput, Input, Textarea } from "components/Form";
 import { Button } from "components/Button";
@@ -22,7 +22,7 @@ const FormSchema = z.object({
 export const MintForm = ({
   onSubmit,
 }: {
-  onSubmit: (values: z.infer<typeof FormSchema>) => void;
+  onSubmit: SubmitHandler<z.infer<typeof FormSchema>>;
 }) => {
   const { register, watch, setValue, handleSubmit } = useForm({
     resolver: zodResolver(FormSchema),
@@ -30,16 +30,18 @@ export const MintForm = ({
   const [state, setState] = useState("");
   const ref = useRef<HTMLInputElement>(null);
 
-  const upload = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]!;
+  const upload = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (!file) return null;
 
     setState(URL.createObjectURL(file));
-    parseExif(file).then((d) => {
-      const { latitude, longitude, DateTimeOriginal = new Date() } = d;
-      setValue("createdAt", DateTimeOriginal.toISOString());
-      setValue("location", { latitude, longitude });
-    });
+    parseExif(file)
+      .then((d) => {
+        const { latitude, longitude, DateTimeOriginal = new Date() } = d;
+        setValue("createdAt", DateTimeOriginal.toISOString());
+        setValue("location", { latitude, longitude });
+      })
+      .catch(console.log);
   };
 
   function handleTakePhoto() {

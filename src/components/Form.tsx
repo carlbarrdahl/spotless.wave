@@ -9,6 +9,7 @@ export const Input = forwardRef(
     ref: ComponentPropsWithRef<"input">["ref"]
   ) => <input className={inputStyles} ref={ref} {...props} />
 );
+Input.displayName = "Input";
 
 export const Textarea = forwardRef(
   (
@@ -16,6 +17,8 @@ export const Textarea = forwardRef(
     ref: ComponentPropsWithRef<"textarea">["ref"]
   ) => <textarea className={inputStyles} ref={ref} {...props} />
 );
+Textarea.displayName = "Textarea";
+
 export const FileInput = forwardRef(
   (
     props: ComponentPropsWithRef<"input">,
@@ -30,3 +33,5 @@ export const FileInput = forwardRef(
     />
   )
 );
+
+FileInput.displayName = "FileInput";

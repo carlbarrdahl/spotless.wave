@@ -1,7 +1,8 @@
-export const parseExif = (
-  file: File
-): Promise<{
+type Parsed = {
   latitude?: number;
   longitude?: number;
   DateTimeOriginal?: Date;
-}> => require("exifr").parse(file);
+};
+
+export const parseExif = (file: File) =>
+  import("exifr").then(({ parse }) => parse(file) as Promise<Parsed>);
