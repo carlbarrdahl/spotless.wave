@@ -11,8 +11,7 @@ import {
   ChangeEvent,
 } from "react";
 
-const mapboxToken =
-  "pk.eyJ1IjoiY2FybGJhcnJkYWhsIiwiYSI6ImNhMDE5OTlhMzcxZGY0MTk1ZTg0Yjk4ZTViMjk1ODQxIn0.nsaHX74kYxKkGqVqm5Po9Q";
+const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 
 export const StaticMap = ({ longitude = 0, latitude = 0, zoom = 16 }) => {
   return (
