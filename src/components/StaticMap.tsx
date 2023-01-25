@@ -1,4 +1,4 @@
-const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
+const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_KEY as string;
 
 export const StaticMap = ({ longitude = 0, latitude = 0, zoom = 16 }) => {
   return (

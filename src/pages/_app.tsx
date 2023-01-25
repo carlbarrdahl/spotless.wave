@@ -4,7 +4,7 @@ import "@fontsource/inter";
 
 import "../styles/globals.css";
 
-const MyApp: AppType<{}> = ({ Component, pageProps }) => {
+const MyApp: AppType = ({ Component, pageProps }) => {
   return <Component {...pageProps} />;
 };
 

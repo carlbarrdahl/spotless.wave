@@ -19,10 +19,12 @@ const FormSchema = z.object({
     .nullish(),
 });
 
+type FormProps = z.infer<typeof FormSchema>;
+
 export const MintForm = ({
   onSubmit,
 }: {
-  onSubmit: SubmitHandler<z.infer<typeof FormSchema>>;
+  onSubmit: SubmitHandler<FormProps>;
 }) => {
   const { register, watch, setValue, handleSubmit } = useForm({
     resolver: zodResolver(FormSchema),
@@ -48,7 +50,7 @@ export const MintForm = ({
     ref.current?.click();
   }
 
-  const location = watch("location");
+  const location = watch("location") as FormProps["location"];
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="">
